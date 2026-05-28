@@ -3,7 +3,12 @@ package classiModello;
 import java.time.*;
 import java.util.Arrays;
 
-public abstract class Proiezione {
+import interfacce.Filtro;
+import interfacce.Identificabile;
+import interfacce.Prezzabile;
+import interfacce.Programmabile;
+
+public abstract class Proiezione implements Identificabile, Programmabile, Prezzabile {
 
 	private static final String[] TAG_CONSENTITI= {"SERALE", "WEEKEND", "FAMIGLIE", "ANTEPRIMA", "LINGUA_ORIGINALE", "EVENTO", "TRE_D"};
 	
@@ -11,7 +16,7 @@ public abstract class Proiezione {
 	private Film film;
 	private Sala sala;
 	private LocalDate data;
-	private LocalTime oraProiezione;
+	private LocalTime oraInizio;
 	private double prezzoBase;
 	private String[] tags;
 	
@@ -21,12 +26,10 @@ public abstract class Proiezione {
 		this.film = film;
 		this.sala = sala;
 		this.data = data;
-		this.oraProiezione = oraProiezione;
+		this.oraInizio = oraProiezione;
 		this.prezzoBase = prezzoBase;
 		this.tags = tags;
 	}
-	
-	
 
 	public Film getFilm() {
 		return film;
@@ -52,12 +55,12 @@ public abstract class Proiezione {
 		this.data = data;
 	}
 
-	public LocalTime getOraProiezione() {
-		return oraProiezione;
+	public LocalTime getOraInizio() {
+		return oraInizio;
 	}
 
-	public void setOraProiezione(LocalTime oraProiezione) {
-		this.oraProiezione = oraProiezione;
+	public void setOraInizio(LocalTime oraProiezione) {
+		this.oraInizio = oraProiezione;
 	}
 
 	public double getPrezzoBase() {
@@ -78,14 +81,12 @@ public abstract class Proiezione {
 		}
 	}
 
-	public abstract double calcoloPrezzoFinale();
-
 	public LocalDateTime getInizioProiezione() {		
-		return data.atTime(oraProiezione);
+		return data.atTime(oraInizio);
 	}
 	
 	public LocalDateTime getFineProiezione(Duration durata) {
-		return data.atTime(oraProiezione.plus(durata));
+		return data.atTime(oraInizio.plus(durata));
 	}
 	
 	public boolean IsToday() {
@@ -103,7 +104,7 @@ public abstract class Proiezione {
 		}
 	
 	public boolean IsSerale() {
-		if (oraProiezione.isAfter(LocalTime.of(20, 0, 0)))
+		if (oraInizio.isAfter(LocalTime.of(20, 0, 0)))
 			return true;
 				else
 			return false;
@@ -125,7 +126,7 @@ public abstract class Proiezione {
 
 	@Override
 	public String toString() {
-		return "Proiezione [data=" + data + ", oraProiezione=" + oraProiezione + ", prezzoBase=" + prezzoBase
+		return "Proiezione [data=" + data + ", oraProiezione=" + oraInizio + ", prezzoBase=" + prezzoBase
 				+ ", tags=" + Arrays.toString(tags) + "]";
 	}
 }
