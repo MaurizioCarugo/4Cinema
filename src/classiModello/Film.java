@@ -5,7 +5,10 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Film {
+import interfacce.Filtro;
+import interfacce.Identificabile;
+
+public class Film implements Identificabile, Filtro<Film>{
 	
 	private int identificativoNumericoUnivoco; 
 	private String titolo; 
@@ -15,8 +18,7 @@ public class Film {
 	private List<GenereFilm> generi = new ArrayList<>();
 	
 
-	public Film(int identificativoNumericoUnivoco, String titolo, String regista, int durataInMinuti,
-			LocalDate dataDiUscita, List<GenereFilm> generi) {
+	public Film(int identificativoNumericoUnivoco, String titolo, String regista, int durataInMinuti, LocalDate dataDiUscita, List<GenereFilm> generi) {
 		super();
 		this.identificativoNumericoUnivoco = identificativoNumericoUnivoco;
 		this.titolo = titolo;
@@ -108,6 +110,18 @@ public class Film {
 	public boolean isRecente() {
 		Period periodo = Period.between(this.getDataDiUscita(), LocalDate.now());
 	    return !periodo.isNegative() && periodo.getYears() < 2;
+	}
+
+	@Override
+	public boolean accetta(Film elemento) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getID() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

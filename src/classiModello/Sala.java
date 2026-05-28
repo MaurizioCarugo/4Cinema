@@ -2,7 +2,9 @@ package classiModello;
 
 import java.util.List;
 
-public class Sala {
+import interfacce.Identificabile;
+
+public class Sala implements Identificabile{
 	
 	private int identificativoNumericoUnivoco; 
 	private String nomeDellaSala; 

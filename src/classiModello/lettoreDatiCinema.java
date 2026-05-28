@@ -1,10 +1,12 @@
-package modellicinema;
+package classiModello;
 
 import java.util.List;
 import java.util.Scanner;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import classiModello.Sala;
+import classiModello.Film;
 
 
 public class lettoreDatiCinema {
@@ -48,13 +50,12 @@ public class lettoreDatiCinema {
 			
 			for (String g: generiString) {
 				GenereFilm genereEnum = GenereFilm.valueOf(g.trim().toUpperCase());
-				film.aggiungiGenere(genereEnum);
+				film.setGeneri(genereEnum);
 			}
 			
 			gestore.aggiungiFilm(film);
 			
 			lettore.close();
-			
 		}
 
 ///SALE
