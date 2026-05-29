@@ -28,10 +28,6 @@ public class Film implements Identificabile, Filtro<Film>{
 		this.generi = generi;
 	}
 
-	public int getIdentificativoNumericoUnivoco() {
-		return identificativoNumericoUnivoco;
-	}
-
 	public void setIdentificativoNumericoUnivoco(int identificativoNumericoUnivoco) {
 		this.identificativoNumericoUnivoco = identificativoNumericoUnivoco;
 	}
@@ -120,8 +116,7 @@ public class Film implements Identificabile, Filtro<Film>{
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return identificativoNumericoUnivoco;
 	}
 	
 	
