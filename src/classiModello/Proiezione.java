@@ -8,11 +8,11 @@ import interfacce.Identificabile;
 import interfacce.Prezzabile;
 import interfacce.Programmabile;
 
-public abstract class Proiezione implements Identificabile, Programmabile, Prezzabile {
+public abstract class Proiezione implements Identificabile, Programmabile, Prezzabile, Filtro<LocalDate> {
 
 	private static final String[] TAG_CONSENTITI= {"SERALE", "WEEKEND", "FAMIGLIE", "ANTEPRIMA", "LINGUA_ORIGINALE", "EVENTO", "TRE_D"};
 	
-	private static int identificativo = 0;
+	private int id;
 	private Film film;
 	private Sala sala;
 	private LocalDate data;
@@ -20,15 +20,25 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	private double prezzoBase;
 	private String[] tags;
 	
+	private static int idIniziale = 1;
 	
 	public Proiezione(Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags) {
 		super();
+		setId();
 		this.film = film;
 		this.sala = sala;
 		this.data = data;
 		this.oraInizio = oraProiezione;
 		this.prezzoBase = prezzoBase;
 		this.tags = tags;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId() {
+		this.id = idIniziale ++;
 	}
 
 	public Film getFilm() {
@@ -47,6 +57,7 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 		this.sala = sala;
 	}
 
+	
 	public LocalDate getData() {
 		return data;
 	}
@@ -55,6 +66,7 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 		this.data = data;
 	}
 
+	
 	public LocalTime getOraInizio() {
 		return oraInizio;
 	}
@@ -81,48 +93,54 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 		}
 	}
 
-	public LocalDateTime getInizioProiezione() {		
-		return data.atTime(oraInizio);
-	}
+//	public LocalDateTime getInizioProiezione() {		
+//		return data.atTime(oraInizio);
+//	}
 	
-	public LocalDateTime getFineProiezione(Duration durata) {
+	public LocalDateTime getDataOraFine(Duration durata) {
 		return data.atTime(oraInizio.plus(durata));
 	}
 	
-	public boolean IsToday() {
+	public boolean isToday() {
 		if (data.isEqual(LocalDate.now()))
 			return true;
 		else
 			return false;
 	}
 	
-	public boolean IsInWeekend() {
+	public boolean isInWeekend() {
 		if (data.getDayOfWeek().getValue() == 6 || data.getDayOfWeek().getValue() == 7)
 		return true;
 			else
 		return false;
 		}
 	
-	public boolean IsSerale() {
+	public boolean isSerale() {
 		if (oraInizio.isAfter(LocalTime.of(20, 0, 0)))
 			return true;
 				else
 			return false;
 	}
 	
-	public boolean IsTerminata(Duration durata) {
-		if (LocalDateTime.now().isAfter(getFineProiezione(durata)))
+	public boolean isTerminata(Duration durata) {
+		if (LocalDateTime.now().isAfter(getDataOraFine(durata)))
 			return true;
 		else
 			return false;
 	}
 	
-	public boolean IsFutura() {
-		if (LocalDateTime.now().isBefore(getInizioProiezione()))
+	public boolean isFutura() {
+		if (LocalDateTime.now().isBefore(getDataOraInizio()))
 			return true;
 		else
 			return false;
 	}
+	
+	public String getDettagliBase() {
+		return "Proiezione in Sala "+sala.getID()+" per il film "+film.getTitolo()+" alle ore "+getOraInizio()+" del giorno "+getData();
+	}
+	
+	public abstract String getTipoProiezione();
 
 	@Override
 	public String toString() {
