@@ -55,12 +55,4 @@ public class Proiezione3D extends Proiezione {
 	public String toString() {
 		return "Proiezione3D [supplemento3D=" + supplemento3D + ", occhialiniInclusi=" + occhialiniInclusi + super.toString() + calcolaPrezzoFinale() + "]";
 	}
-
-	@Override
-	public boolean accetta(LocalDate elemento) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	
 }

@@ -8,7 +8,7 @@ import interfacce.Identificabile;
 import interfacce.Prezzabile;
 import interfacce.Programmabile;
 
-public abstract class Proiezione implements Identificabile, Programmabile, Prezzabile, Filtro<LocalDate> {
+public abstract class Proiezione implements Identificabile, Programmabile, Prezzabile, Filtro<String> {
 
 	private static final String[] TAG_CONSENTITI= {"SERALE", "WEEKEND", "FAMIGLIE", "ANTEPRIMA", "LINGUA_ORIGINALE", "EVENTO", "TRE_D"};
 	
@@ -88,9 +88,17 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	}
 
 	public void setTags(String[] tags) {
-		if (tags.equals(TAG_CONSENTITI)) {
-			this.tags = tags;
+		for (int i = 0; i < tags.length; i++) {
+			for (String consentiti : TAG_CONSENTITI) {
+				if (tags[i] == consentiti) {
+					this.tags[i] = tags[i];
+				} else {
+					System.out.println(tags[i]+" tag non consentito");
+				}
+			}
 		}
+		
+		
 	}
 
 //	public LocalDateTime getInizioProiezione() {		
@@ -147,4 +155,18 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 		return "Proiezione [data=" + data + ", oraProiezione=" + oraInizio + ", prezzoBase=" + prezzoBase
 				+ ", tags=" + Arrays.toString(tags) + "]";
 	}
+	
+	@Override
+	public boolean accetta(String ricercaTag) {
+		if (this.tags == null || ricercaTag == null) {
+			return false;
+		}
+		for (String tag : this.tags) {
+			if (tag.equalsIgnoreCase(ricercaTag)) {
+				return true;
+			}
+		}
+		
+		return false;
+	} 
 }

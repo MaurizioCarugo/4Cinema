@@ -66,15 +66,5 @@ public class EventoSpeciale extends Proiezione {
 		return "EventoSpeciale [nomeEvento=" + nomeEvento + ", ospite=" + ospite + ", postiLimitati=" + postiLimitati + super.toString() + calcolaPrezzoFinale() + "]";
 	}
 
-	@Override
-	public boolean accetta(LocalDate elemento) {
-		// TODO Auto-generated method stub
-		return false;
-	} 
-	
-	
-	
-	
-	
 	
 }

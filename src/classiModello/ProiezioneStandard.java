@@ -35,10 +35,4 @@ public class ProiezioneStandard extends Proiezione {
 	public String toString() {
 		return "ProiezioneStandard "+super.toString()+calcolaPrezzoFinale();
 	}
-
-	@Override
-	public boolean accetta(LocalDate elemento) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
