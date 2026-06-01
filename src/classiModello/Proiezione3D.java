@@ -7,8 +7,8 @@ public class Proiezione3D extends Proiezione {
 	private double supplemento3D;
 	private boolean occhialiniInclusi;
 	
-	public Proiezione3D(Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags, double supplemento3d, boolean occhialiniInclusi) {
-		super(film, sala, data, oraProiezione, prezzoBase, tags);
+	public Proiezione3D(int id, Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags, double supplemento3d, boolean occhialiniInclusi) {
+		super(id, film, sala, data, oraProiezione, prezzoBase, tags);
 		supplemento3D = supplemento3d;
 		this.occhialiniInclusi = occhialiniInclusi;
 	}

@@ -1,5 +1,16 @@
 package classiModello;
 
 public enum GenereFilm {
-
+	AZIONE,
+	FANTASCIENZA,
+	AVVENTURA,
+	THRILLER,
+	GIALLO,
+	DRAMMATICO,
+	ANIMAZIONE,
+	COMMEDIA,
+	FANTASIA,
+	MUSICALE,
+	ORRORE,
+	STORICO;
 }

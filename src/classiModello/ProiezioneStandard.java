@@ -5,8 +5,8 @@ import java.time.LocalTime;
 
 public class ProiezioneStandard extends Proiezione {
 
-	public ProiezioneStandard(Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags) {
-		super(film, sala, data, oraProiezione, prezzoBase, tags);
+	public ProiezioneStandard(int id, Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags) {
+		super(id, film, sala, data, oraProiezione, prezzoBase, tags);
 	}
 
 	@Override

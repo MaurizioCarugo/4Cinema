@@ -20,12 +20,9 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	private double prezzoBase;
 	private String[] tags;
 	
-	private static int idIniziale = 1;
-	
-	public Proiezione(Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags) {
-		super();
-		setId();
-		this.film = film;
+	public Proiezione(int id, Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags) {
+		setId(id);
+		setFilm(film);
 		this.sala = sala;
 		this.data = data;
 		this.oraInizio = oraProiezione;
@@ -37,8 +34,8 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 		return id;
 	}
 
-	public void setId() {
-		this.id = idIniziale ++;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Film getFilm() {
@@ -46,7 +43,9 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	}
 
 	public void setFilm(Film film) {
-		this.film = film;
+		if (film != null) {
+			this.film = film;
+		}
 	}
 
 	public Sala getSala() {
@@ -54,7 +53,9 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	}
 
 	public void setSala(Sala sala) {
-		this.sala = sala;
+		if (sala != null) {
+			this.sala = sala;
+		}
 	}
 
 	
@@ -166,7 +167,6 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 				return true;
 			}
 		}
-		
 		return false;
 	} 
 }

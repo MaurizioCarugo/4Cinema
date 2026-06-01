@@ -8,8 +8,8 @@ public class EventoSpeciale extends Proiezione {
 	private String ospite;
 	private boolean postiLimitati;
 	
-	public EventoSpeciale(Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags, String nomeEvento, String ospite, boolean postiLimitati) {
-		super(film, sala, data, oraProiezione, prezzoBase, tags);
+	public EventoSpeciale(int id, Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags, String nomeEvento, String ospite, boolean postiLimitati) {
+		super(id, film, sala, data, oraProiezione, prezzoBase, tags);
 		this.nomeEvento = nomeEvento;
 		this.ospite = ospite;
 		this.postiLimitati = postiLimitati;
