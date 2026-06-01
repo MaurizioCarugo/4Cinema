@@ -25,48 +25,48 @@ public class LettoreFileTxt {
 		for (String[] filmSingolo : listaFilm) {
 			List<GenereFilm> generi = new ArrayList<>();
 			String[] generiStringa = filmSingolo[5].split(",");
-			String errore = "";
+			String errore = "";		// verificare piuttosto se mandare un messaggio di errore al posto di cancellare tutto
 			for (int i = 0; i < generiStringa.length; i++) {
 				switch (generiStringa[i]) {
 				
-				case "AZIONE":
-					generi.add(GenereFilm.AZIONE);
+					case "AZIONE":
+						generi.add(GenereFilm.AZIONE);
 					break;
-				case "FANTASCIENZA":
-					generi.add(GenereFilm.FANTASCIENZA);
+					case "FANTASCIENZA":
+						generi.add(GenereFilm.FANTASCIENZA);
 					break;
-				case "AVVENTURA":
-					generi.add(GenereFilm.AVVENTURA);
+					case "AVVENTURA":
+						generi.add(GenereFilm.AVVENTURA);
 					break;
-				case "THRILLER":
-					generi.add(GenereFilm.THRILLER);
+					case "THRILLER":
+						generi.add(GenereFilm.THRILLER);
 					break;
-				case "GIALLO":
-					generi.add(GenereFilm.GIALLO);
+					case "GIALLO":
+						generi.add(GenereFilm.GIALLO);
 					break;
-				case "DRAMMATICO":
-					generi.add(GenereFilm.DRAMMATICO);
+					case "DRAMMATICO":
+						generi.add(GenereFilm.DRAMMATICO);
 					break;
-				case "ANIMAZIONE":
-					generi.add(GenereFilm.ANIMAZIONE);
+					case "ANIMAZIONE":
+						generi.add(GenereFilm.ANIMAZIONE);
 					break;
-				case "COMMEDIA":
-					generi.add(GenereFilm.COMMEDIA);
+					case "COMMEDIA":
+						generi.add(GenereFilm.COMMEDIA);
 					break;
-				case "FANTASIA":
-					generi.add(GenereFilm.FANTASIA);
+					case "FANTASIA":
+						generi.add(GenereFilm.FANTASIA);
 					break;
-				case "MUSICALE":
-					generi.add(GenereFilm.MUSICALE);
+					case "MUSICALE":
+						generi.add(GenereFilm.MUSICALE);
 					break;
-				case "ORRORE":
-					generi.add(GenereFilm.ORRORE);
+					case "ORRORE":
+						generi.add(GenereFilm.ORRORE);
 					break;
-				case "STORICO":
-					generi.add(GenereFilm.STORICO);
+					case "STORICO":
+						generi.add(GenereFilm.STORICO);
 					break;
-				default:
-					errore = null;
+					default:
+						errore = null;
 					break;
 				}
 			}
@@ -82,6 +82,5 @@ public class LettoreFileTxt {
 				continue;
 			}
 		}
-		// qui si aggiungerà la lista all'aggregatore in qualche modo
 	}
 }

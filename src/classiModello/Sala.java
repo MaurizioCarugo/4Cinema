@@ -5,7 +5,7 @@ import java.util.List;
 
 import interfacce.Identificabile;
 
-public class Sala implements Identificabile{
+public class Sala implements Identificabile {
 	
 	private int identificativoNumericoUnivoco; 
 	private String nomeDellaSala; 
@@ -13,8 +13,7 @@ public class Sala implements Identificabile{
 	private boolean has3D;
 	private List<CaratteristicheSala> caratteristiche = new ArrayList<>();
 	
-	public Sala(int identificativoNumericoUnivoco, String nomeDellaSala, int numeroMassimoDiPosti, boolean has3d,
-			List<CaratteristicheSala> caratteristiche) {
+	public Sala(int identificativoNumericoUnivoco, String nomeDellaSala, int numeroMassimoDiPosti, boolean has3d, List<CaratteristicheSala> caratteristiche) {
 		super();
 		this.identificativoNumericoUnivoco = identificativoNumericoUnivoco;
 		this.nomeDellaSala = nomeDellaSala;
@@ -79,7 +78,4 @@ public class Sala implements Identificabile{
 	public int getID() {
 		return identificativoNumericoUnivoco;
 	}
-	
-	
-	
 }

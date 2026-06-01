@@ -25,7 +25,6 @@ public class Archivio <T extends Identificabile> {
 		return elementi.remove(id) == null;
 	}
 	
-	// da guardare perchè non l'ho capito
 	public List<T> trovaTutti() {
 		List<T> tutti = new ArrayList<>();
 		for (T elemento : elementi.values()) {

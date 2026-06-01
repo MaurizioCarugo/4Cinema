@@ -2,6 +2,8 @@ package classiModello;
 
 import java.time.*;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import interfacce.Filtro;
 import interfacce.Identificabile;
@@ -18,16 +20,16 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	private LocalDate data;
 	private LocalTime oraInizio;
 	private double prezzoBase;
-	private String[] tags;
+	private Set<String> tags = new HashSet<>();
 	
 	public Proiezione(int id, Film film, Sala sala, LocalDate data, LocalTime oraProiezione, double prezzoBase, String[] tags) {
 		setId(id);
 		setFilm(film);
-		this.sala = sala;
+		setSala(sala);
 		this.data = data;
 		this.oraInizio = oraProiezione;
 		this.prezzoBase = prezzoBase;
-		this.tags = tags;
+		setTags(tags);
 	}
 	
 	public int getId() {
@@ -84,7 +86,7 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 		this.prezzoBase = prezzoBase;
 	}
 
-	public String[] getTags() {
+	public Set<String> getTags() {
 		return tags;
 	}
 
@@ -92,14 +94,12 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 		for (int i = 0; i < tags.length; i++) {
 			for (String consentiti : TAG_CONSENTITI) {
 				if (tags[i] == consentiti) {
-					this.tags[i] = tags[i];
+					this.tags.add(tags[i]);
 				} else {
 					System.out.println(tags[i]+" tag non consentito");
 				}
 			}
 		}
-		
-		
 	}
 
 //	public LocalDateTime getInizioProiezione() {		
@@ -154,7 +154,7 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	@Override
 	public String toString() {
 		return "Proiezione [data=" + data + ", oraProiezione=" + oraInizio + ", prezzoBase=" + prezzoBase
-				+ ", tags=" + Arrays.toString(tags) + "]";
+				+ ", tags=" + tags + "]";
 	}
 	
 	@Override

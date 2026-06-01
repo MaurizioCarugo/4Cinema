@@ -14,6 +14,4 @@ public interface Programmabile {
 		}
 		return null;
 	}
-	
-	
 }

@@ -15,7 +15,7 @@ public class GestoreCinema {
 	private Map<Integer, List<Proiezione>> proiezioniPerSala = new HashMap<>();
 	private Map<String, List<Film>> filmPerGenere = new HashMap<>();
 	
-	// liste per genere
+	// liste per genere (da controllare che non si sovrascrivano)
 	private List<Film> azione = new ArrayList<>();
 	private List<Film> fantascienza = new ArrayList<>();
 	private List<Film> avventura = new ArrayList<>();
