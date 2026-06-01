@@ -17,7 +17,7 @@ public abstract class Proiezione implements Identificabile, Programmabile, Prezz
 	private Sala sala;
 	private LocalDate data;
 	private LocalTime oraInizio;
-	private double prezzoBase;
+	protected double prezzoBase;
 	private String[] tags;
 	
 	
