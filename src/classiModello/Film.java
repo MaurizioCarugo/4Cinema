@@ -17,12 +17,10 @@ public class Film implements Identificabile, Filtro<Film>{
 	private LocalDate dataDiUscita; 
 	private List<GenereFilm> generi = new ArrayList<>();
 	
-	private static int idIniziale = 1;
-	
 
-	public Film(String titolo, String regista, int durataInMinuti, LocalDate dataDiUscita, List<GenereFilm> generi) {
+	public Film(int identificativoNumericoUnivoco, String titolo, String regista, int durataInMinuti, LocalDate dataDiUscita, List<GenereFilm> generi) {
 		super();
-		setIdentificativoNumericoUnivoco();
+		this.identificativoNumericoUnivoco = identificativoNumericoUnivoco;
 		this.titolo = titolo;
 		this.regista = regista;
 		this.durataInMinuti = durataInMinuti;
@@ -30,12 +28,8 @@ public class Film implements Identificabile, Filtro<Film>{
 		this.generi = generi;
 	}
 
-	public int getIdentificativoNumericoUnivoco() {
-		return identificativoNumericoUnivoco;
-	}
-
-	public void setIdentificativoNumericoUnivoco() {
-		this.identificativoNumericoUnivoco = idIniziale ++;
+	public void setIdentificativoNumericoUnivoco(int identificativoNumericoUnivoco) {
+		this.identificativoNumericoUnivoco = identificativoNumericoUnivoco;
 	}
 
 	public String getTitolo() {
@@ -122,8 +116,7 @@ public class Film implements Identificabile, Filtro<Film>{
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return identificativoNumericoUnivoco;
 	}
 	
 	
